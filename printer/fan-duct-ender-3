@@ -1,0 +1,5 @@
+(set-bounds! [-100 -100 -100] [100 100 100])
+(set-quality! 8)
+(set-resolution! 10)
+
+
