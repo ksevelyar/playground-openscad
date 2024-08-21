@@ -1,7 +1,7 @@
-length = 136;
-length2 = 201;
-width = 30;
-height = 30;
+length = 150;
+length2 = 210;
+width = 25;
+height = 25;
 wall = 1;
 hole = 3;
 
@@ -24,14 +24,16 @@ difference() {
   translate([wall, wall, wall]) cube([length2 - wall * 2, width - wall * 2, height * 2]);
   translate([wall, wall, wall]) cube([width - wall * 2, length - wall * 2, height * 2]);
 
-  for (offset = [10, 30, 50, 70, 90, 110, 130]) {
-    translate([length2 - offset, width/2, 25]) rotate([-90, 0.0]) cylinder(length2, d = hole);
-    translate([length2 - offset, width/2, 15]) rotate([-90, 0.0]) cylinder(length2, d = hole);
+  for (i = [0 : 8]) {
+    offset = i * 20 + hole * 2;
+    translate([length2 - offset, width/2, height]) rotate([-90, 0.0]) cylinder(length2, d = hole * 1.5);
+    translate([length2 - offset, width/2, hole]) rotate([-90, 0.0]) cylinder(length2, d = hole);
   }
 
-  for (offset = [10, 30, 50, 70]) {
-    translate([width/2, length - offset, 25]) rotate([0, 90.0]) cylinder(length, d = hole);
-    translate([width/2, length - offset, 15]) rotate([0, 90.0]) cylinder(length, d = hole);
+  for (i = [0 : 5]) {
+    offset = i * 20 + hole * 2;
+    translate([width/2, length - offset, height]) rotate([0, 90.0]) cylinder(length, d = hole * 1.5);
+    translate([width/2, length - offset, hole]) rotate([0, 90.0]) cylinder(length, d = hole);
   }
 
   translate([length2 - 10,width/2,-10]) cylinder(length, d = hole);
