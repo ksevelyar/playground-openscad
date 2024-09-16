@@ -1,12 +1,23 @@
-length = 15;
-height = 10;
-gap = 1.6;
-width = 5 + gap * 4;
-$fn = 128;
+$fn = 100;
 
-difference() {
-  cube([width, length, height]);
+hook_distance = 95;
+hook_diameter = 4.9;
+hole_distance = 105;
+hole_diameter = 4.1;
 
-  translate([5, -1, gap]) cube([gap, length * 2, height]);
-  translate([5 + gap * 2, -1, -gap]) cube([gap, length * 2, height]);
+hull() {
+cylinder(d = hook_diameter, h = 47);  
+translate([hook_distance, 0, 0]) cylinder(d = hook_diameter, h = 7);  
+}
+
+translate([0, 0, -7]) cylinder(d = hook_diameter, h = 8); 
+translate([hook_distance, 0, -7]) cylinder(d = hook_diameter, h = 8); 
+
+
+
+translate([0,0,100])  hull() {
+cylinder(d = hook_diameter, h = 47);  
+translate([hook_distance, 0, 0]) cylinder(d = hook_diameter, h = 7);  
+  translate([hook_distance, 0, 0]) cylinder(d = hook_diameter, h = 7);  
+  translate([hook_distance, 0, 0]) cylinder(d = hook_diameter, h = 7);  
 }

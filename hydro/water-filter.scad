@@ -1,9 +1,9 @@
 // Parameters
 $fn=128;
 
-length = 268 / 2; // Length of the box
+length = 270 / 2; // Length of the box
 width = 160; // Width of the box
-height = 5; // Height of the box
+height = 1; // Height of the box
 radius = 19; // Radius for rounding corners
 
 // Create the 3D model with rounded corners
