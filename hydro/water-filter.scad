@@ -1,22 +1,44 @@
-// Parameters
-$fn=128;
+$fn=64;
 
-length = 270 / 2; // Length of the box
-width = 160; // Width of the box
-height = 1; // Height of the box
-radius = 19; // Radius for rounding corners
+length = 270 / 2;
+width = 160;
+height = 2;
+radius = 19;
+hole_diameter = 10;
 
-// Create the 3D model with rounded corners
 module rounded_box() {
-        // Extrude a rounded rectangle to create a 3D box
         translate([radius,radius,0]) linear_extrude(height) {
             offset(r=radius) {
                 square([length-radius*2, width-radius*2], center=false);
             }
         }
 
+        cube([length/2, width, height]);
 }
 
-// Render the model
-rounded_box();
-cube([length/2, width, height]);
+
+translate([length - radius/3-1.5, radius/3, 0]) cylinder(d = 4, h = 10);
+translate([radius/3, radius/3, 0]) cylinder(d = 4, h = 10);
+translate([radius/3, width - radius/3, 0]) cylinder(d = 4, h = 10);
+translate([length - radius/3-1.5, width-radius/3, 0]) cylinder(d = 4, h = 10);
+
+
+translate([(length - radius/3) / 2, radius/3, 0]) cylinder(d = 4, h = 10);
+translate([radius/3, (width - radius/3)/2, 0]) cylinder(d = 4, h = 10);
+translate([(length - radius/3) / 2, width-radius/3, 0]) cylinder(d = 4, h = 10);
+translate([(length - radius/3)-1.5, (width - radius/3)/2, 0]) cylinder(d = 4, h = 10);
+
+module create_holes() {
+    for (x = [radius : 12 : length - radius]) {
+        for (y = [radius : 12 : width - radius]) {
+            translate([x, y, -1])
+                cylinder(d = hole_diameter, h = 10, center = true);
+        }
+    }
+}
+
+difference() {
+    rounded_box();
+    create_holes();
+}
+
