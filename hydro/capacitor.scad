@@ -1,5 +1,5 @@
-length = 150;
-length2 = 210;
+length = 170;
+length2 = 170;
 width = 25;
 height = 25;
 wall = 1;
@@ -24,15 +24,15 @@ difference() {
   translate([wall, wall, wall]) cube([length2 - wall * 2, width - wall * 2, height * 2]);
   translate([wall, wall, wall]) cube([width - wall * 2, length - wall * 2, height * 2]);
 
-  for (i = [0 : 8]) {
+  for (i = [0 : 6]) {
     offset = i * 20 + hole * 2;
-    translate([length2 - offset, width/2, height]) rotate([-90, 0.0]) cylinder(length2, d = hole * 1.5);
+    translate([length2 - offset, width/2, height]) rotate([-90, 0.0]) cylinder(length2, d = hole * 3);
     translate([length2 - offset, width/2, hole]) rotate([-90, 0.0]) cylinder(length2, d = hole);
   }
 
-  for (i = [0 : 5]) {
+  for (i = [0 : 6]) {
     offset = i * 20 + hole * 2;
-    translate([width/2, length - offset, height]) rotate([0, 90.0]) cylinder(length, d = hole * 1.5);
+    translate([width/2, length - offset, height]) rotate([0, 90.0]) cylinder(length, d = hole * 3);
     translate([width/2, length - offset, hole]) rotate([0, 90.0]) cylinder(length, d = hole);
   }
 
