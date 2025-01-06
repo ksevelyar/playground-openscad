@@ -3,7 +3,7 @@ length2 = 170;
 width = 25;
 height = 25;
 wall = 1;
-hole = 3;
+hole = 2.5;
 
 $fn = 128;
 
@@ -26,13 +26,13 @@ difference() {
 
   for (i = [0 : 6]) {
     offset = i * 20 + hole * 2;
-    translate([length2 - offset, width/2, height]) rotate([-90, 0.0]) cylinder(length2, d = hole * 3);
+    translate([length2 - offset, width/2, height-2]) rotate([-90, 0.0]) cylinder(length2, d = hole * 3.5);
     translate([length2 - offset, width/2, hole]) rotate([-90, 0.0]) cylinder(length2, d = hole);
   }
 
   for (i = [0 : 6]) {
     offset = i * 20 + hole * 2;
-    translate([width/2, length - offset, height]) rotate([0, 90.0]) cylinder(length, d = hole * 3);
+    translate([width/2, length - offset, height-2]) rotate([0, 90.0]) cylinder(length, d = hole * 3.5);
     translate([width/2, length - offset, hole]) rotate([0, 90.0]) cylinder(length, d = hole);
   }
 
