@@ -15,12 +15,12 @@
     hull() {
     translate([0,-depth,0]) {
       cube([depth,depth,height]);
-      
+
       intersection() {
         translate([length,depth/2,0]) cylinder(d=depth*1.1,h=width);  
         cube([depth*2,depth,height]);
       }
-      
+
   }
    }
  }
