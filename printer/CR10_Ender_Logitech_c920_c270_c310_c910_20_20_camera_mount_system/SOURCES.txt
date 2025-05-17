@@ -1,4 +1,0 @@
-Sources for CR10, Ender Logitech c920, c270, c310, c910 20/20 camera mount system
-
-CR10 MULTI Camera Mount Z axis for Pi Cam Logitech c270 c310 c920 9000 CR-10 (http://www.thingiverse.com/thing:2516411)
-iphone camera mount for Makergear M2 - Lockable ball & socket (http://www.thingiverse.com/thing:1079807)
