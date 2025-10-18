@@ -30,9 +30,9 @@ module inner_shell_a() {
   leg_width = 6;
   leg_length = 20;
 
-  pin_width = 2;
+  pin_width = 2.2;
   pin_height = height/2+wall+height/4;
-  pin_length = leg_length-8;
+  pin_length = leg_length-wall*2*2 - 2;
 
   translate([0,radius,0]) cube([20,leg_width,height/2+wall]);
   translate([(leg_length - pin_length)/2,radius + (leg_width - pin_width)/2,0]) cube([pin_length,pin_width,pin_height]);
@@ -64,11 +64,11 @@ module inner_shell_b() {
   radius = 3;
   leg_width = 6;
   leg_length = 20;
-  
+
   pin_width = 3;
   pin_height = height/2+wall+height/4;
-  pin_length = leg_length-6+0.5;
-  
+  pin_length = leg_length-wall*4;
+
   difference() {
     translate([0,radius,0]) cube([20,leg_width,height/2+wall]);
     translate([(leg_length - pin_length)/2,radius + (leg_width - pin_width)/2,wall]) cube([pin_length,pin_width,pin_height]);
@@ -76,14 +76,14 @@ module inner_shell_b() {
 
   difference() {
     translate([0,height-radius-leg_width,0]) cube([20,leg_width,height/2+wall]);
-    translate([(leg_length - pin_length)/2,height - radius - (leg_width - pin_width)/2-pin_width,wall]) cube([20-6,pin_width,pin_height]);
+    translate([(leg_length - pin_length)/2,height - radius - (leg_width - pin_width)/2-pin_width,wall]) cube([pin_length,pin_width,pin_height]);
   }
 }
 
 module outer_shell() {
-  height = 60+20;
+  height = 60 + 20 + 2;
   spacer = 4;
-  edge = 60 + spacer;
+  edge = 60 + spacer + 3;
   wall = 1;
 
   difference() {
@@ -117,3 +117,39 @@ inner_shell_a();
 translate([90, 0,0]) inner_shell_b();
 
 //translate([120,0,0]) outer_shell();
+
+
+module extrusion_test_a() {
+  height = 10;
+  wall = 1;
+
+  radius = 3;
+  leg_width = 6;
+  leg_length = 20;
+
+  pin_width = 2;
+  pin_height = 20;
+  pin_length = leg_length-8;
+  translate([0,radius,0]) cube([20,leg_width,height/2+wall]);
+  translate([(leg_length - pin_length)/2,radius + (leg_width - pin_width)/2,0]) cube([pin_length,pin_width,pin_height]);
+}
+
+module extrusion_test_b() {
+  height = 10;
+  wall = 1;
+
+  radius = 3;
+  leg_width = 6;
+  leg_length = 20;
+  
+  pin_width = 3;
+  pin_height = height/2+wall+height/4;
+  pin_length = leg_length-6+0.5;
+  difference() {
+    translate([0,radius,0]) cube([20,leg_width,height/2+wall]);
+    translate([(leg_length - pin_length)/2,radius + (leg_width - pin_width)/2,wall]) cube([pin_length,pin_width,pin_height]);
+  }
+}
+
+//extrusion_test_a();
+//translate([0,10,0]) extrusion_test_b();
