@@ -113,10 +113,10 @@ module outer_shell() {
 }
 
 
-inner_shell_a();
-translate([90, 0,0]) inner_shell_b();
+//inner_shell_a();
+//translate([90, 0,0]) inner_shell_b();
 
-//translate([120,0,0]) outer_shell();
+translate([120,0,0]) outer_shell();
 
 
 module extrusion_test_a() {
