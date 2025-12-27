@@ -1,10 +1,12 @@
 $fn = 128;
 width = 55;
-length = 70;
+length = 90;
 padding = 6;
 
+translate([(width - 30) / 2, length - 20, 0]) cube([30, 20, 3]);
+
 difference() {
-  cube([width, length, 3]);
+  cube([width, length, 2]);
 
   translate([padding, padding, -1]) cylinder(10, d=4);
   translate([width - padding, length - padding, -1]) cylinder(10, d=4);
@@ -21,5 +23,5 @@ translate([0, length - 10, 0])
       translate([width - 30 / 2 - 5 / 2, 0, 3]) rotate([-31 / 2, 0, 0]) cube([5, 10, 38]);
     }
 
-    translate([(55 - 40.3) / 2, 13, 8]) cube([40.3, 20.5, 61]);
+    translate([(55 - 40.4) / 2, 13, 0.8]) cube([40.4, 20.5, 61]);
   }
