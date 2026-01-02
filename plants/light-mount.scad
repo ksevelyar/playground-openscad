@@ -1,9 +1,9 @@
 $fn = 128;
 width = 55;
-length = 90;
+length = 50;
 padding = 6;
 
-translate([(width - 30) / 2, length - 20, 0]) cube([30, 20, 3]);
+translate([(width - 30) / 2, length - 50, 0]) cube([30, 50, 3]);
 
 difference() {
   cube([width, length, 2]);
