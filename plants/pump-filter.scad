@@ -1,30 +1,21 @@
-$fn = 64;
+wall = 1;
+height = 26.5;
+width = 34;
+length = 100;
+shift = 9;
 
 difference() {
-  cylinder(d=10, h=20);
-  translate([0, 0, -0.1]) cylinder(d1=9.2, d2=8.6, h=21);
-}
+  cube([length+wall*2, width+wall*2, height+wall*2]);
+  translate([wall, wall, wall]) cube([length*2, width, height]);
 
-difference() {
-  union() {
-    translate([0, 0, 39]) sphere(d=40);
+  for (x = [wall:3.9:width-wall]) {
+    translate([-wall, x, shift]) cube([length - wall * 6, 2.5, 90]);
   }
-  translate([0, 0, 39]) cylinder(d=50, h=50);
-  translate([0, 0, -0.1]) cylinder(d1=9.2, d2=8.6, h=21);
-  translate([0, 0, 39]) sphere(d=37);
 
-  holes();
-}
-difference() {
-translate([0, 0, 38]) cylinder(h=1, d=40);
-translate([0,0,5]) holes();
-}
-
-module holes() {
-  translate([-25, -25, 0])for (x = [0:2.5:50]) {
-    for (y = [0:2.5:50]) {
-      translate([x, y, 10])
-        cylinder(d=2, h=50, center=true);
-    }
+  for (x = [shift:3.9:height]) {
+    translate([wall, -wall, x]) cube([length - wall * 8, width*2, 2.5]);
   }
 }
+
+
+
