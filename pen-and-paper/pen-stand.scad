@@ -21,7 +21,7 @@ module rounded_box(size = [10, 10, 5], r = 2) {
 }
 
 difference() {
-  rounded_box([width, length, height], r=pen_diameter/2);
+  rounded_box([width, length, height], r=pen_diameter / 2);
   row_padding_x = 14;
   first_hole_center_y = length / 2 - 2.5 * gap;
 
