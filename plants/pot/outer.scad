@@ -1,8 +1,5 @@
 include <mixin.scad>;
 
-// Tapered guide ridge along the x axis: half-height straight prism
-// with a tilted cutter, so the outer shell halves wedge together.
-// cutter_shift moves the tilted cutter along the ridge so it leans over it.
 module spacer_along_x(tilt, cutter_shift) {
   difference() {
     cube([SPACER_LENGTH, SPACER_THICKNESS, LEG_EXTENSION / 2]);
