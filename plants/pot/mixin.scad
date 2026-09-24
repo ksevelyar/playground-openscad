@@ -1,4 +1,4 @@
-$fn = 16;
+$fn = 64;
 
 POT_INNER_SIZE = 90;
 POT_WALL_THICKNESS = 2;

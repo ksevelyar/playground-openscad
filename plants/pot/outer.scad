@@ -17,7 +17,7 @@ module spacer_along_y(tilt, cutter_shift) {
 }
 
 module outer_shell() {
-  outer_extent = (POT_INNER_SIZE + 1 + POT_CORNER_RADIUS) * 2;
+  outer_extent = POT_INNER_SIZE + 1 + POT_CORNER_RADIUS;
 
   difference() {
     rounded_box([outer_extent, outer_extent, LEG_EXTENSION]);
@@ -29,7 +29,7 @@ module outer_shell() {
       ]);
   }
 
-  translate([0, (outer_extent + POT_WALL_THICKNESS * 2) / 2, 0])
+  translate([0, outer_extent / 2, 0])
     spacer_along_x(-3, 4);
   translate([outer_extent - SPACER_LENGTH, outer_extent / 2, 0])
     spacer_along_x(3, -4);
