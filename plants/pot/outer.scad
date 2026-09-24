@@ -2,7 +2,7 @@ include <mixin.scad>;
 
 module outer_shell() {
   outer_h = LEG_EXTENSION;
-  outer_e = (POT_INNER_SIZE + SPACER_SIZE + POT_CORNER_RADIUS) * 4;
+  outer_e = (POT_INNER_SIZE + 1 + POT_CORNER_RADIUS) * 2;
 
   difference() {
     rounded_box([outer_e, outer_e, outer_h]);
