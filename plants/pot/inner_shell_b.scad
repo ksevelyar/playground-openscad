@@ -5,7 +5,7 @@ module inner_shell_b() {
   difference() {
     legs();
     translate([0, 0, POT_WALL_THICKNESS])
-      leg_pins(PIN_WIDTH, LEG_DEPTH - POT_WALL_THICKNESS * 4);
+      leg_pins(PIN_WIDTH, LEG_DEPTH - POT_WALL_THICKNESS * 2);
   }
 }
 
