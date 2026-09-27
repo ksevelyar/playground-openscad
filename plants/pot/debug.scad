@@ -1,6 +1,6 @@
 include <mixin.scad>;
 
-POT_SIZE = 20;
+POT_EDGE = 20;
 PIN_HEIGHT = 20;
 
 leg_with_socket(0);
