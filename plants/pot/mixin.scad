@@ -2,17 +2,17 @@ $fn = 64;
 
 _POT_EDGES = [82, 103, 130, 164];
 POT_EDGE = 82;
-POT_HEIGHT = 130;
+POT_HEIGHT = 164;
 WALL_WIDTH = 2;
 CORNER_RADIUS = 3;
 
 LEG_WIDTH = 6;
-LEG_LENGTH = POT_HEIGHT / 5;
+LEG_LENGTH = POT_HEIGHT / 7;
 PIN_LENGTH = LEG_LENGTH - WALL_WIDTH * 2;
 
 PIN_WIDTH = 3;
 PIN_HEIGHT = POT_EDGE / 2 + POT_EDGE / 7;
-FIT_GAP = 0.34;
+FIT_GAP = 0.36;
 OVERCUT = 0.1;
 
 FIRST_LEG_Y = CORNER_RADIUS;
@@ -116,7 +116,7 @@ module top_legs() {
 }
 
 module top_leg_pin(wall_y, pin_width, pin_length) {
-  translate([-POT_HEIGHT + (LEG_LENGTH - pin_length) / 2, wall_y + (LEG_WIDTH - pin_width) / 2, WALL_WIDTH + FIT_GAP])
+  translate([-POT_HEIGHT + (LEG_LENGTH - pin_length) / 2, wall_y + (LEG_WIDTH - pin_width) / 2, WALL_WIDTH])
     cube([pin_length, pin_width, PIN_HEIGHT]);
 }
 

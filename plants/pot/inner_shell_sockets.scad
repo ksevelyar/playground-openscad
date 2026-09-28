@@ -1,6 +1,6 @@
 include <mixin.scad>;
 
-module inner_shell_b() {
+module inner_shell_sockets() {
   pot_shell();
   top_legs_with_sockets(PIN_WIDTH, PIN_LENGTH);
   difference() {
@@ -10,4 +10,4 @@ module inner_shell_b() {
   }
 }
 
-inner_shell_b();
+inner_shell_sockets();
