@@ -1,10 +1,10 @@
 include <mixin.scad>;
 
 module outer_shell() {
-  outer_extent = POT_EDGE + WALL_WIDTH * 2 + FIT_GAP;
+  outer_extent = POT_EDGE;
 
   difference() {
-    rounded_box([outer_extent, outer_extent, LEG_LENGTH]);
+    rounded_box([outer_extent, outer_extent, LEG_LENGTH + WALL_WIDTH + FIT_GAP]);
     translate([WALL_WIDTH, WALL_WIDTH, WALL_WIDTH])
       rounded_box([
         outer_extent - WALL_WIDTH * 2,
