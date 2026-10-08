@@ -1,1 +1,1 @@
-cube(size = 40);
+cube(size=40);

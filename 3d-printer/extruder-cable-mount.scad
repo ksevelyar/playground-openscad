@@ -11,7 +11,7 @@ difference() {
     translate([shift + hook, -wall, 8.5]) difference() {
         rotate([-90, 0, 0]) cylinder(h=20, d=17);
         translate([0, -1, 0]) rotate([-90, 0, 0]) cylinder(h=52, d=hook);
-        translate([-3.5,-1,0]) cube([7,40,10]);
+        translate([-3.5, -1, 0]) cube([7, 40, 10]);
       }
   }
 

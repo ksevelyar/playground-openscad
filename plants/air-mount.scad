@@ -28,4 +28,3 @@ intersection() {
     translate([width / 2, 70, 0]) cylinder(d=150, h=1);
   }
 }
-

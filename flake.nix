@@ -18,28 +18,38 @@
           buildInputs = with pkgs; [
             openscad-unstable
             openscad-lsp
-            (pkgs.writeShellScriptBin "render-stl" ''
-              set -euo pipefail
+            fd
+            topiary
 
-              render_one() {
-                scad="$1"
+            (pkgs.writeShellScriptBin "render-and-format" ''
+              set -euo pipefail
+              while IFS= read -r scad; do
+                topiary format --skip-idempotence "$scad"
                 stl="''${scad%.scad}.stl"
                 output=$(openscad -o "$stl" "$scad" 2>&1) || {
                   rm -f "$stl"
                   if echo "$output" | grep -q "top level object is empty"; then
                     echo "skip: $scad"
-                    return 0
+                    continue
                   fi
                   echo "FAILED: $scad"
                   echo "$output" | tail -5
-                  return 1
+                  exit 1
                 }
                 echo "render: $scad"
-              }
-              export -f render_one
+              done < <(fd --extension scad --exclude tmp --type file)
+            '')
 
-              find . -name '*.scad' -type f | sed 's|^\./||' | \
-                xargs -P "$(nproc)" -I{} bash -c 'render_one "$@"' _ {}
+            (pkgs.writeShellScriptBin "format-check" ''
+              set -euo pipefail
+              status=0
+              while IFS= read -r scad; do
+                topiary format --language openscad < "$scad" | diff -u "$scad" - >/dev/null || {
+                  echo "unformatted: $scad"
+                  status=1
+                }
+              done < <(fd --extension scad --exclude tmp --type file)
+              exit "$status"
             '')
           ];
         };

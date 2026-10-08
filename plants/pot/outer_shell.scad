@@ -6,11 +6,13 @@ module outer_shell() {
   difference() {
     rounded_box([outer_extent, outer_extent, LEG_LENGTH + WALL_WIDTH + FIT_GAP]);
     translate([WALL_WIDTH, WALL_WIDTH, WALL_WIDTH])
-      rounded_box([
-        outer_extent - WALL_WIDTH * 2,
-        outer_extent - WALL_WIDTH * 2,
-        LEG_LENGTH + WALL_WIDTH * 2,
-      ]);
+      rounded_box(
+        [
+          outer_extent - WALL_WIDTH * 2,
+          outer_extent - WALL_WIDTH * 2,
+          LEG_LENGTH + WALL_WIDTH * 2,
+        ]
+      );
   }
 }
 

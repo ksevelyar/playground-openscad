@@ -33,33 +33,35 @@ module rounded_box(size = [10, 10, 5], corner_radius = CORNER_RADIUS) {
   }
 }
 
-function leg_profile(slope) = let(
-  underside_z0 = WALL_WIDTH,
-  underside_z1 = WALL_WIDTH + slope * LEG_LENGTH,
-  top_z = POT_EDGE / 2 - FIT_GAP
-) [
-  [0, underside_z0],
-  [LEG_LENGTH, underside_z1],
-  [LEG_LENGTH, top_z],
-  [0, top_z],
-];
+function leg_profile(slope) =
+  let (
+    underside_z0 = WALL_WIDTH,
+    underside_z1 = WALL_WIDTH + slope * LEG_LENGTH,
+    top_z = POT_EDGE / 2 - FIT_GAP
+  ) [
+      [0, underside_z0],
+      [LEG_LENGTH, underside_z1],
+      [LEG_LENGTH, top_z],
+      [0, top_z],
+  ];
 
-function pin_profile(slope, pin_length) = let(
-  x0 = (LEG_LENGTH - pin_length) / 2,
-  x1 = (LEG_LENGTH + pin_length) / 2,
-  floor_z0 = WALL_WIDTH * 2 + slope * x0,
-  floor_z1 = WALL_WIDTH * 2 + slope * x1,
-  top_z = WALL_WIDTH * 2 + PIN_HEIGHT
-) [
-  [x0, floor_z0],
-  [x1, floor_z1],
-  [x1, top_z],
-  [x0, top_z],
-];
+function pin_profile(slope, pin_length) =
+  let (
+    x0 = (LEG_LENGTH - pin_length) / 2,
+    x1 = (LEG_LENGTH + pin_length) / 2,
+    floor_z0 = WALL_WIDTH * 2 + slope * x0,
+    floor_z1 = WALL_WIDTH * 2 + slope * x1,
+    top_z = WALL_WIDTH * 2 + PIN_HEIGHT
+  ) [
+      [x0, floor_z0],
+      [x1, floor_z1],
+      [x1, top_z],
+      [x0, top_z],
+  ];
 
 module extruded_profile(profile, width) {
   translate([0, width, 0]) rotate([90, 0, 0])
-    linear_extrude(height=width) polygon(points=profile);
+      linear_extrude(height=width) polygon(points=profile);
 }
 
 module leg_with_pin(slope) {
@@ -86,18 +88,20 @@ module bottom_slots() {
 
 module pot_shell() {
   rotate([0, -90, 0]) difference() {
-    rounded_box([POT_EDGE, POT_EDGE, POT_HEIGHT]);
-    translate([WALL_WIDTH, WALL_WIDTH, WALL_WIDTH])
-      rounded_box([
-        POT_EDGE - WALL_WIDTH * 2,
-        POT_EDGE - WALL_WIDTH * 2,
-        POT_HEIGHT + WALL_WIDTH * 2,
-      ]);
-    translate([POT_EDGE / 2, -WALL_WIDTH, -WALL_WIDTH])
-      cube([POT_EDGE, POT_EDGE + WALL_WIDTH * 2, POT_HEIGHT * 2]);
+      rounded_box([POT_EDGE, POT_EDGE, POT_HEIGHT]);
+      translate([WALL_WIDTH, WALL_WIDTH, WALL_WIDTH])
+        rounded_box(
+          [
+            POT_EDGE - WALL_WIDTH * 2,
+            POT_EDGE - WALL_WIDTH * 2,
+            POT_HEIGHT + WALL_WIDTH * 2,
+          ]
+        );
+      translate([POT_EDGE / 2, -WALL_WIDTH, -WALL_WIDTH])
+        cube([POT_EDGE, POT_EDGE + WALL_WIDTH * 2, POT_HEIGHT * 2]);
 
-    bottom_slots();
-  }
+      bottom_slots();
+    }
 
   translate([-POT_HEIGHT, WALL_WIDTH, WALL_WIDTH]) cube([WALL_WIDTH, POT_EDGE - WALL_WIDTH * 2, LEG_WIDTH]);
 }
