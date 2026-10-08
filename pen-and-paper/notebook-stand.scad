@@ -1,9 +1,9 @@
-$fn=256;
-wall=6;
-notebook_width=12;
-notebook_length=147;
-notebook_height=210;
-count=4;
+$fn = 256;
+wall = 6;
+notebook_width = 12;
+notebook_length = 147;
+notebook_height = 210;
+count = 4;
 
 module notebook() {
   cube([12, 147, 210]);
