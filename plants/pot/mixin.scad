@@ -2,7 +2,7 @@ $fn = 64;
 
 POT_EDGE = 82;
 POT_HEIGHT = 82;
-WALL_WIDTH = 1;
+WALL_WIDTH = 1.6;
 CORNER_RADIUS = 3;
 
 LEG_ANGLE = 55;
@@ -37,7 +37,7 @@ function leg_profile(slope) =
   let (
     underside_z0 = WALL_WIDTH,
     underside_z1 = WALL_WIDTH + slope * LEG_LENGTH,
-    top_z = POT_EDGE / 2 - FIT_GAP
+    top_z = POT_EDGE / 2
   ) [
       [0, underside_z0],
       [LEG_LENGTH, underside_z1],
@@ -83,13 +83,13 @@ module bottom_slots() {
   slot_count_half = floor((between_legs_span / 2 - SLOT_WIDTH / 2) / SLOT_STEP);
   for (slot_index = [-slot_count_half:slot_count_half])
     translate([WALL_WIDTH, POT_EDGE / 2 + slot_index * SLOT_STEP - SLOT_WIDTH / 2, -OVERCUT])
-      cube([POT_EDGE, SLOT_WIDTH, WALL_WIDTH + OVERCUT * 2]);
+      cube([POT_EDGE, SLOT_WIDTH, WALL_WIDTH * 2 + OVERCUT * 2]);
 }
 
 module pot_shell() {
   rotate([0, -90, 0]) difference() {
       rounded_box([POT_EDGE, POT_EDGE, POT_HEIGHT]);
-      translate([WALL_WIDTH, WALL_WIDTH, WALL_WIDTH])
+      translate([WALL_WIDTH, WALL_WIDTH, WALL_WIDTH * 2])
         rounded_box(
           [
             POT_EDGE - WALL_WIDTH * 2,
