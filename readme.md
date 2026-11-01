@@ -1,6 +1,4 @@
-# playground-openscad
-
-[![CI](https://github.com/ksevelyar/playground-openscad/actions/workflows/ci.yml/badge.svg)](https://github.com/ksevelyar/playground-openscad/actions/workflows/ci.yml)
+# playground-openscad [![CI](https://github.com/ksevelyar/playground-openscad/actions/workflows/ci.yml/badge.svg)](https://github.com/ksevelyar/playground-openscad/actions/workflows/ci.yml)
 
 ## Usage
 
