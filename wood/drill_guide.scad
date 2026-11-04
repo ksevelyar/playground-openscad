@@ -3,7 +3,7 @@ $fn = 128;
 length = 40;
 wall = 3;
 depth = 40.1;
-height = depth + wall;
+height = depth + wall * 2;
 
 overcut = 5;
 blade_cut_width = 0.8;
